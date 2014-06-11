@@ -13,7 +13,7 @@ class User(UserMixin, db.Model):
     city = db.Column(db.String(64))
     state = db.Column(db.String(2))
     zip = db.Column(db.String(9))
-    gender = db.Column(db.Enum('M', 'F'))
+    gender = db.Column(db.Enum('M', 'F', name='gender_types'))
     home_box = db.Column(db.String(32))
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
