@@ -11,6 +11,12 @@ __pycache__/
 # Sql lite
 *.sqlite
 
+# Foreman
+.env
+
+# Emacs 
+*~
+
 # Distribution / packaging
 .Python
 env/
