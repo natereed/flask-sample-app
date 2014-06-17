@@ -1,13 +1,13 @@
-"""initial migration
+"""initial migrations
 
-Revision ID: 3c7e6046cf6
+Revision ID: 4ae1bf58f1
 Revises: None
-Create Date: 2014-06-02 07:37:50.189763
+Create Date: 2014-06-16 21:31:07.491679
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '3c7e6046cf6'
+revision = '4ae1bf58f1'
 down_revision = None
 
 from alembic import op
@@ -26,7 +26,7 @@ def upgrade():
     sa.Column('city', sa.String(length=64), nullable=True),
     sa.Column('state', sa.String(length=2), nullable=True),
     sa.Column('zip', sa.String(length=9), nullable=True),
-    sa.Column('gender', sa.Enum('M', 'F'), nullable=True),
+    sa.Column('gender', sa.Enum('M', 'F', name='gender_types'), nullable=True),
     sa.Column('home_box', sa.String(length=32), nullable=True),
     sa.Column('username', sa.String(length=64), nullable=True),
     sa.Column('password_hash', sa.String(length=128), nullable=True),
