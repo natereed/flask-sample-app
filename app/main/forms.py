@@ -1,6 +1,8 @@
 from flask.ext.wtf import Form
-from wtforms import DateField, SelectField, StringField, SubmitField
+from wtforms_html5 import DateField
+from wtforms import SelectField, StringField, SubmitField
 from wtforms.validators import Required
+from wtforms import widgets
 
 class RegistrationForm(Form):
     first_name = StringField('First name', validators = [Required()])

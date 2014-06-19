@@ -8,9 +8,9 @@ from ..email import send_email
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
+    print(current_app.config) # Debugging, remove later
     form = RegistrationForm()
     if form.validate_on_submit():
-
         user = User()
         user.username = form.username.data
         user.first = form.first_name.data
@@ -28,7 +28,7 @@ def index():
         db.session.commit
 
         if current_app.config['ADMIN']:
-            send_email(app.config['ADMIN'], 'Athlete Registration', 'mail/new_user', user=user)
+            send_email(current_app.config['ADMIN'], 'Athlete Registration', 'mail/new_user', user=user)
 
         return redirect(url_for('.index'))
 

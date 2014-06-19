@@ -5,13 +5,14 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     MAIL_SERVER = 'smtp.googlemail.com'
-    MAIL_PORT = 587
+    MAIL_PORT = 465
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     MAIL_SUBJECT_PREFIX = '[Crossfit]'
-    MAIL_SENDER = 'admin <nate@natereed.com>'
-    ADMIN = os.environ.get('ADMIN')
+    #MAIL_SENDER = 'admin <nate@natereed.com>'
+    MAIL_SENDER = 'nate@natereed.com'
+    ADMIN = os.environ.get('ADMIN') if os.environ.get('ADMIN') else 'nate@natereed.com'
 
     @staticmethod
     def init_app(app):
