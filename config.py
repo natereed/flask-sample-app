@@ -6,10 +6,12 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 465
-    MAIL_USE_TLS = True
+    MAIL_DEBUG = True
+    #MAIL_USE_TLS = True
+    MAIL_USE_SSL = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    MAIL_SUBJECT_PREFIX = '[Crossfit]'
+    MAIL_SUBJECT_PREFIX = 'Your registration'
     #MAIL_SENDER = 'admin <nate@natereed.com>'
     MAIL_SENDER = 'nate@natereed.com'
     ADMIN = os.environ.get('ADMIN') if os.environ.get('ADMIN') else 'nate@natereed.com'
@@ -20,6 +22,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
+    MAIL_DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
 
