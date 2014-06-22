@@ -12,7 +12,7 @@ def index():
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User()
-        user.username = form.username.data
+        user.email = form.email.data
         user.first = form.first_name.data
         user.last = form.last_name.data
         user.city = form.city.data

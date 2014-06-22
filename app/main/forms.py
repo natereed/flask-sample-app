@@ -1,10 +1,15 @@
 from flask.ext.wtf import Form
 from wtforms_html5 import DateField
-from wtforms import SelectField, StringField, SubmitField
-from wtforms.validators import Required
+from wtforms import SelectField, StringField, SubmitField, PasswordField
+from wtforms.validators import Required, EqualTo
 from wtforms import widgets
 
 class RegistrationForm(Form):
+    email = StringField('Email', validators = [Required()])
+    password = PasswordField('Password', validators = [
+        Required(),
+        EqualTo('confirm', message='Passwords must match')])
+    confirm = PasswordField('Confirm Password', validators = [Required()])
     first_name = StringField('First name', validators = [Required()])
     last_name = StringField('Last name', validators = [Required()])
     dob = DateField()
@@ -15,7 +20,5 @@ class RegistrationForm(Form):
     zip = StringField('Zip')
     gender = SelectField(u'Gender', choices=[('M', 'M'), ('F', 'F')])
     home_box = StringField('Home Box')
-    username = StringField('Username', validators = [Required()])
-    password = StringField('Password', validators = [Required()])
     submit = SubmitField('Submit')
 
